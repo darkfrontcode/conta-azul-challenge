@@ -7,7 +7,6 @@
 > A simple CRUD actions vehicles dashboard
 
 I have deployed a clone of this repo at heroku level right on this link https://conta-azul.herokuapp.com/.
-Go a head and check it out dude.
 
 <br>
 
