@@ -11,8 +11,8 @@ Go a head and check it out dude.
 
 <br>
 
-
 > General information
+
 The application runs above ts-node which is nothing more than a strongly typed node version. 
 
 I have chosen express to manage all the routes and middlewares and Pug Template for an easier and faster code.
