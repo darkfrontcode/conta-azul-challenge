@@ -16,7 +16,7 @@ The application runs above ts-node which is nothing more than a strongly typed n
 
 I have chosen express to manage all the routes and middlewares and Pug Template for an easier and faster code.
 
-In development mode webpack-middleware makes the major part of the work, hot-reloading components, styles and assets and make awesome async bundles.
+In development mode webpack-middleware makes the major part of the work, hot-reloading components, styles, assets and make awesome async bundles.
 
 In production we can rely with all ts-node powers to maintain and scale the application to the top.
 
