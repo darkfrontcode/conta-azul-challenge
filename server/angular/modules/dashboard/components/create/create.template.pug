@@ -1,0 +1,95 @@
+doctype html
+.content(#content)
+	h2.title-create-vehicle.pt-10.pb-10.pl-5.pr-5 Criar Veículo
+	form([formGroup]="form", novalidate)
+
+		ca-input(
+			name="placa",
+			[id]="'placa'",
+			[type]="'text'",
+			[placeholder]="'Placa'",
+			[valid]="valid('placa')",
+			[invalid]="invalid('placa')",
+			[(content)]="placa",
+			formControlName="placa",
+			ngDefaultControl
+		)
+
+		ca-input(
+			name="modelo",
+			[id]="'modelo'",
+			[type]="'text'",
+			[placeholder]="'Modelo'",
+			[valid]="valid('modelo')",
+			[invalid]="invalid('modelo')",
+			[(content)]="modelo",
+			formControlName="modelo",
+			ngDefaultControl
+		)
+
+		ca-input(
+			name="marca",
+			[id]="'marca'",
+			[type]="'text'",
+			[placeholder]="'Marca'",
+			[valid]="valid('marca')",
+			[invalid]="invalid('marca')",
+			[(content)]="marca",
+			formControlName="marca",
+			ngDefaultControl
+		)
+
+		ca-input(
+			name="imagem",
+			[id]="'imagem'",
+			[type]="'text'",
+			[placeholder]="'Imagem (url)'",
+			[valid]="valid('imagem')",
+			[invalid]="invalid('imagem')",
+			[(content)]="imagem",
+			formControlName="imagem",
+			ngDefaultControl
+		)
+
+		.image-wrapper(*ngIf="form.value.imagem")
+			img([src]="form.value.imagem", alt="Vehicle image")
+
+		.checkbox-wrapper.pl-5.pr-5.pt-5.pb-5
+			h4.title-create-vehicle-secondary.pb-5 Combustível
+			.checkbox-group
+				.checkbox-item
+					ca-radio(
+						class="pr-2",
+						[id]="'flex'",
+						[radiogroup]="'combustivelGroup'", 
+						[value]="'Flex'", 
+						[active]="form.value.combustivel=='Flex'",
+						(state)="updateCombustivel($event)"
+					)
+					label.title-create-vehicle-secondary(for="flex") Flex
+				.checkbox-item
+					ca-radio(
+						class="pr-2",
+						[id]="'gasolina'",
+						[radiogroup]="'combustivelGroup'", 
+						[value]="'Gasolina'",
+						[active]="form.value.combustivel=='Gasolina'",
+						(state)="updateCombustivel($event)"
+					)
+					label.title-create-vehicle-secondary(for="gasolina") Gasolina
+
+		ca-input(
+			name="valor",
+			[id]="'valor'",
+			[type]="'number'",
+			[placeholder]="'Valor'",
+			[valid]="valid('valor')",
+			[invalid]="invalid('valor')",
+			[(content)]="valor",
+			formControlName="valor",
+			ngDefaultControl
+		)
+
+		.button-wrapper.pl-5.pr-5.pt-5.pb-5
+			button.btn-secondary((click)="close()") Cancelar
+			button.btn-primary((click)="create(form.value)", [disabled]="!form.valid") Criar

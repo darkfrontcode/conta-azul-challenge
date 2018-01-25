@@ -1,0 +1,89 @@
+/* ==========================================================================
+	-- CA Table Style
+========================================================================== */
+
+@import $stylus + 'colors'
+@import $stylus + 'borders'
+@import $stylus + 'titles'
+
+ca-table
+	width 100%
+	display flex
+	flex-direction column
+
+	table
+		display flex
+		flex-direction column
+		width 100%
+
+		thead
+		tbody
+			display flex
+			flex-grow 1
+
+			tr
+				display flex
+				flex-grow 1
+
+				td
+					display flex
+					align-items center
+					padding 0
+
+					&:nth-of-type(1)
+						width 6%
+						justify-content flex-start
+
+					&:nth-of-type(2)
+						width 18%
+
+					&:nth-of-type(3)
+						width 14%
+
+					&:nth-of-type(4)
+						width 18%
+
+					&:nth-of-type(5)
+						width 14%
+
+					&:nth-of-type(6)
+						width 18%
+
+					&:nth-of-type(7)
+						width 12%
+
+		thead
+			background $colors-blue-light
+
+			tr
+				border-radius $borders-primary $borders-primary 0 0
+				border 1px solid $colors-gray-search-border
+
+				td
+					titles-ca-table-thead()
+					height 40px
+
+					&:nth-of-type(1)
+						ca-checkbox
+							display flex
+
+		tbody
+			flex-direction column
+			background white
+
+			tr
+				transition background .25s, border-color .25s
+				border 1px solid $colors-gray-search-border
+				border-top none
+
+				td
+					titles-ca-table-tbody()
+					height 50px
+
+					&:nth-of-type(1)
+						ca-checkbox
+							display flex
+
+				&.active
+					background $colors-blue-table-hover-bg
+					border-color $colors-blue-table-hover-border

@@ -1,0 +1,98 @@
+/* ==========================================================================
+   -- Titles
+   ========================================================================== *
+/* ==========================================================================
+   -- Imports
+   ========================================================================== */
+
+@import './fonts'
+@import './colors'
+@import './borders'
+
+/* ==========================================================================
+   -- Mixins
+   ========================================================================== */
+
+titles-base()
+	font-family $fonts-primary
+
+titles-ca-table-thead()
+	titles-base()
+	font-size 13px
+	font-weight 600
+	color $colors-blue-soft-dark
+
+titles-ca-table-tbody()
+	titles-ca-table-thead()
+	font-weight 500
+
+titles-link()
+	titles-base()
+	transition color .25s, background .25s
+	color $colors-blue-primary
+	font-size 13px
+	text-decoration underline
+	padding 6px
+	background transparent
+	border-radius $borders-primary
+	cursor pointer
+
+	&:hover
+		color white
+		background $colors-blue-primary
+		text-decoration underline
+
+title-image-preview()
+	titles-base()
+	font-size 16px
+	font-weight 500
+	color white
+
+
+title-create-vehicle()
+	titles-base()
+	color white
+	font-size 20px
+	font-weight normal
+
+title-create-vehicle-secondary()
+	title-create-vehicle()
+	font-size 14px
+
+title-no-vehicle-primary()
+	title-create-vehicle()
+	color $colors-blue-light-sky
+
+title-no-vehicle-secondary()
+	title-create-vehicle()
+	font-size 14px
+	color $colors-gray-message
+	line-height 20px
+
+/* ==========================================================================
+   -- Classes
+   ========================================================================== */
+
+.titles-ca-table-thead
+	titles-ca-table-thead()
+
+.titles-ca-table-tbody
+	titles-ca-table-tbody()
+
+.titles-link
+	titles-link()
+
+.title-image-preview
+	title-image-preview()	
+
+.title-create-vehicle
+	title-create-vehicle()
+
+.title-create-vehicle-secondary
+	title-create-vehicle-secondary()
+
+.title-no-vehicle-primary
+	title-no-vehicle-primary()
+
+.title-no-vehicle-secondary
+	title-no-vehicle-secondary()

@@ -1,0 +1,36 @@
+{
+	"disableCompileOnSave": true,
+	"compilerOptions": {
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"lib": [ "es2015", "dom" ],
+		"module": "commonjs",
+		"target": "es5",
+		"moduleResolution": "node",
+		"noImplicitAny": true,
+		"noUnusedLocals": true,
+		"strictNullChecks": true,
+		"pretty": true,
+		"removeComments": true,
+		"sourceMap": true,
+		"suppressImplicitAnyIndexErrors": true,
+		"allowSyntheticDefaultImports": true,
+		"allowJs": true,
+		"typeRoots": [
+            "./node_modules/@types"
+		],
+		"baseUrl": ".",
+		"paths": {
+            "models": ["server/express/models/index.ts"],
+			"builders": ["server/express/builders/index.ts"],
+			"vehicles": ["server/express/vehicles/index.ts"],
+			"api": ["server/express/controllers/api/index.ts"]
+        }
+	},
+    "include": [
+		"./server/angular/*"
+    ],
+	"exclude": [
+		"./node_modules"
+	]
+}

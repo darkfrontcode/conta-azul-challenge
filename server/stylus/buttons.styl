@@ -1,0 +1,118 @@
+/* ==========================================================================
+   -- buttons
+   ========================================================================== */
+/* ==========================================================================
+   -- imports
+   ========================================================================== */
+
+@import './colors'
+@import './borders'
+@import './fonts'
+
+/* ==========================================================================
+   -- variables
+   ========================================================================== */
+
+$lightness = 20%
+
+/* ==========================================================================
+   -- mixins
+   ========================================================================== */
+
+hoverfy(color, amount)
+	saturate(lighten(color, amount), amount)
+
+btn-base()
+	font-family $fonts-primary
+	background transparent
+	border none
+	cursor pointer
+
+btn-roundead()
+	border-radius $borders-primary
+
+btn-primary()
+	btn-base()
+	btn-roundead()
+	transition background .25s
+	color white
+	font-weight 600
+	background $colors-green-primary
+	padding 13px 36px 
+
+	&:hover
+		background hoverfy($colors-green-primary, $lightness)
+
+	&:disabled
+		opacity .5
+
+		&:hover
+			cursor: default
+
+
+btn-secondary()
+	btn-primary()
+	background $colors-red-primary
+
+	&:hover
+		background hoverfy($colors-red-primary, $lightness)
+
+btn-pagination-left()
+	btn-base()
+	transition background .25s, border-color .25s, opacity .25s
+	box-sizing border-box
+	width 40px
+	height @width
+	border-radius $borders-primary 0 0 $borders-primary
+	background white
+	border 1px solid $colors-gray-search-border
+	color $colors-blue-soft-dark
+	font-size 26px
+
+	&:hover
+		background $colors-blue-table-hover-bg
+		border-color $colors-blue-table-hover-border
+
+	&.disabled
+		opacity .5
+		background white !important
+		border-color $colors-gray-search-border !important
+		cursor default !important
+
+btn-pagination-right()
+	btn-pagination-left()
+	border-radius 0 $borders-primary $borders-primary 0
+
+btn-pagination-bullet()
+	btn-pagination-left()
+	border-radius 0 0 0 0
+	font-size 14px
+	text-align center
+	line-height 38px
+
+	&:hover
+		background-color $colors-orange-soft
+		border-color $colors-gray-search-border
+
+	&.active
+		background $colors-blue-table-hover-bg !important
+		border-color $colors-blue-table-hover-border !important
+
+/* ==========================================================================
+   -- classes
+   ========================================================================== */
+
+.btn-primary
+	btn-primary()
+
+.btn-secondary
+	btn-secondary()
+
+.btn-pagination-left
+	btn-pagination-left()
+
+.btn-pagination-right
+	btn-pagination-right()
+
+.btn-pagination-bullet
+	btn-pagination-bullet()

@@ -1,0 +1,9 @@
+input(
+	type="text", 
+	placeholder="Pesquisar",
+	class="pl-3 pr-3",
+	[(ngModel)]="search",
+	(keyup.enter)="onEnter(search)"
+)
+button((click)="onEnter(search)")
+	i.fa.fa-search(aria-hidden="true")

@@ -1,0 +1,10 @@
+button.btn-pagination-left([ngClass]="leftIsDisabled()", (click)="decrease()")
+	span &laquo;
+ul
+	li(
+		*ngFor="let item of [].constructor(bulletsNumber()); index as i", 
+		[ngClass]="isActive(i+1)",
+		(click)="goTo(i+1)"
+	) {{ i+1 }}
+button.btn-pagination-right([ngClass]="rightIsDisabled()", (click)="increase()")
+	span &raquo;

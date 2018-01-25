@@ -1,0 +1,54 @@
+/* ==========================================================================
+	-- CA Search Bar Style
+========================================================================== */
+
+@import $stylus + 'colors'
+@import $stylus + 'borders'
+@import $stylus + 'keyframes'
+
+$height = 40px
+$items-height = ($height - 2px)
+
+ca-search-bar
+	display flex
+	box-sizing border-box
+	border 1px solid $colors-gray-search-border
+	height $height
+	border-radius $borders-primary
+	overflow hidden
+
+	input
+		box-sizing border-box
+		width 180px
+		flex-grow 1
+		height $items-height
+		border 0
+		background white
+		border 0
+		line-height $items-height
+		color $colors-blue-soft-dark
+		font-size 13px
+
+		&::placeholder
+			color darken($colors-gray-search-text, 25%)
+			opacity 1
+	
+	button
+		transition background .5s
+		flex-grow 0
+		flex-shrink 0
+		height $items-height
+		width $height
+		border 0
+		border-left 1px solid $colors-gray-search-border
+		background $colors-blue-foreground
+
+		&:hover
+			background saturate(darken($colors-blue-foreground, 3%), 3%)
+
+			i
+				animation search-enter .5s ease
+
+		i
+			font-size 13px
+			color $colors-blue-soft-dark

@@ -1,0 +1,77 @@
+/* ==========================================================================
+	-- CA Image Preview Style
+========================================================================== */
+
+@import $stylus + 'colors'
+
+ca-image-preview
+	transform translateX(100%)
+	position absolute
+	top 0
+	right 0
+	width 30%
+	height 100%
+	background $colors-blue-primary
+
+	.content
+		flex-direction column
+		align-items flex-start
+		transform translateX(100%)
+		position absolute
+		top 0
+		right 0
+		width 100%
+		height 100%
+		background $colors-blue-bucket-primary
+
+		header
+			display flex
+			justify-content flex-start
+			align-items center
+			width 100%
+
+			i
+				display flex
+				align-items center
+				justify-content center
+				width 50px
+				height @width
+				color white
+				cursor pointer
+
+		section
+			display flex
+			flex-direction column
+			justify-content flex-start
+			box-sizing border-box
+			width 100%
+			padding 40px
+
+			ul
+				display flex
+				justify-content space-between
+				flex-direction row
+				flex-wrap wrap
+				width @width
+				
+				li
+					display flex
+					justify-content center
+					align-items enter
+					width 49%
+					height 100px
+					background $colors-blue-bucket-secondary
+					margin-bottom 1.75%
+					overflow hidden
+
+					img
+						transition transform 4s
+						width 100%
+						object-fit cover
+
+						&:hover
+							transform scale(1.2)
+
+				li:nth-of-type(1)
+					width @width
+					height 200px

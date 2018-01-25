@@ -1,0 +1,38 @@
+/* ==========================================================================
+   -- inputs
+   ========================================================================== */
+/* ==========================================================================
+   -- imports
+   ========================================================================== */
+
+@import './colors'
+@import './titles'
+@import './fonts'
+
+/* ==========================================================================
+   -- mixins
+   ========================================================================== */
+
+input-base()
+	font-family $fonts-primary
+	border 0
+	background transparent
+
+inputs-create-vehicle()
+	input-base()
+	title-create-vehicle-secondary()
+	box-sizing border-box
+	padding 0 30px
+	border-bottom 2px solid $colors-blue-light-sky-border
+	height 60px
+
+	&::placeholder
+		color white
+		opacity 1
+
+/* ==========================================================================
+   -- classes
+   ========================================================================== */
+
+.inputs-create-vehicle
+	inputs-create-vehicle()

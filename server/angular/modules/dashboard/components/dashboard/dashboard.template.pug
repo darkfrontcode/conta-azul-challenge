@@ -1,0 +1,36 @@
+doctype html
+ca-image-preview([state]="imagePreviewState")
+create([(state)]="createVehicleState")
+.content
+	header.pt-5.pb-5(*ngIf="!noVehicles()")
+		.actions
+			button.btn-primary.mr-5((click)="createVehicleOpen()") Novo Carro
+			button.btn-secondary(*ngIf="showRemove()", (click)="remove()") Excluir Carro
+		
+		.utils
+			ca-search-bar([(search)]="search")
+
+	ca-message(*ngIf="noVehicles(); else vehicleTable")
+		h2.title-no-vehicle-primary.mt-10(ca-message-title) Nenhum veículo cadastrado.
+		div(ca-message-message)
+			p.title-no-vehicle-secondary.mb-6
+				| Cadastre seu primeiro veículo na 
+				b ContaAzul
+				| .
+				br
+				| É fácil, rápido e seguro.
+			button.btn-primary.mr-5((click)="createVehicleOpen()") Criar primeiro carro
+
+	ng-template(#vehicleTable)
+		ca-table(*ngIf="showVehiclesList(); else queryListTable", [(data)]="vehicles")
+
+		ng-template(#queryListTable)
+			ca-table([(data)]="queryList")
+
+
+	//- ca-pagination(
+	//- 	[totalOfRegisters]="totalVehicles"
+	//- 	[registersPerPage]="totalRecords"
+	//- 	[currentPage]="page"
+	//- 	(pageOutput)="updateVehiclelist($event)"
+	//- )

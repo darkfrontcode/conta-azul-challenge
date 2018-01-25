@@ -1,0 +1,24 @@
+/* ==========================================================================
+   -- Spacing
+   ========================================================================== */
+
+   $spacing-default = 5px
+   $spacing-directions-full = left top right bottom
+   $spacing-directions-short = l t r b
+
+/* ==========================================================================
+   -- Margins && Paddings
+   ========================================================================== */
+
+	for $x in (0..3)
+
+		$d-full = $spacing-directions-full[$x]
+		$d-short = $spacing-directions-short[$x]
+
+		for $y in (1..10)
+
+			.m{$d-short}-{$y}
+				margin-{$d-full} $y * $spacing-default
+
+			.p{$d-short}-{$y}
+				padding-{$d-full} $y * $spacing-default

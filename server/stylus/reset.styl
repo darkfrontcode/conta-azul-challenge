@@ -1,0 +1,64 @@
+/* ==========================================================================
+   -- Reset
+   ========================================================================== */
+
+@import './colors'
+
+body
+html
+h1
+h2
+h3
+h4
+h5
+p
+span
+a
+ul
+li
+menu
+section
+button
+label
+    margin 0
+    padding 0
+    line-height 1em
+
+body
+html
+    height 100%
+    overflow hidden
+
+body
+    background $colors-blue-foreground
+    overflow-y auto
+
+a
+a:active
+a:hover
+    text-decoration none
+    color initial
+
+img
+    border none
+    margin 0
+    padding 0
+
+label
+    cursor pointer
+
+ul
+    list-style none
+
+button
+input
+    &:focus
+        outline none
+
+button
+    cursor pointer
+
+.content
+    display flex
+    align-items center
+    width 942px

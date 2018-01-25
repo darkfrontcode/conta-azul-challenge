@@ -1,0 +1,31 @@
+/* ==========================================================================
+	-- CA Pagination Style
+========================================================================== */
+
+@import $stylus + 'colors'
+@import $stylus + 'buttons'
+
+ca-pagination
+	display flex
+	justify-content center
+
+	ul
+		display flex
+
+		li
+			btn-pagination-bullet()
+			border-right 0
+
+			&:nth-last-of-type(1)
+				border-right 1px solid $colors-gray-search-border
+
+	button
+		&.btn-pagination-left
+			border-right 0
+
+		&.btn-pagination-right
+			border-left 0
+
+		span
+			position relative
+			top -3px

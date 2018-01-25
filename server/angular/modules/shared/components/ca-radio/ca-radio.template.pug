@@ -1,0 +1,10 @@
+label
+	svg
+		path(d="M2,6 L5,10 L12,3")
+	input(
+		[id]="id", 
+		type="radio", 
+		[name]="radiogroup", 
+		[value]="value", 
+		(change)="onChange(value)"
+	)

@@ -1,0 +1,11 @@
+label([for]="id", [ngClass]="[valid, invalid]")
+	input(
+		[id]="id",
+		[type]="type", 
+		[placeholder]="placeholder",
+		[(ngModel)]="content",
+		(keyup)="onContentChanged(content)"
+	)
+	.status
+		i.fa.fa-check
+		i.fa.fa-times

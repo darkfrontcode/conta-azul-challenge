@@ -1,0 +1,66 @@
+/* ==========================================================================
+	-- CA Input Style
+========================================================================== */
+
+@import $stylus + 'colors'
+@import $stylus + 'inputs'
+
+ca-input
+	display flex
+	width 100%
+
+	label
+		display flex
+		position relative
+		width 100%
+
+		&.valid
+			.status
+				.fa-check
+					display flex
+
+				.fa-times
+					display none
+
+		&.invalid
+			.status
+				.fa-check
+					display none
+
+				.fa-times
+					display flex
+
+		input[type=text]
+		input[type=number]
+			inputs-create-vehicle()
+			padding-right 45px
+			width 100%
+
+		input[type="number"]
+			&::-webkit-inner-spin-button 
+			&::-webkit-outer-spin-button
+				appearance none
+
+		.status
+			position absolute
+			display flex
+			width 30px
+			height 50px
+			right 0
+			top 0
+
+			i
+				position absolute
+				display none
+				align-items center
+				height 100%
+				top 0
+				right 0
+				font-size 12px
+				width 30px
+
+				&.fa-check
+					color $colors-blue-swimming-pool
+
+				&.fa-times
+					color $colors-red-primary

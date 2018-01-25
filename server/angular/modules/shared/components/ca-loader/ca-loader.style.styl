@@ -1,0 +1,43 @@
+/* ==========================================================================
+	-- CA Loader Style
+========================================================================== */
+
+@import $stylus + 'colors'
+
+ca-loader
+	position absolute
+	display none
+	flex-direction column
+	justify-content center
+	align-items center
+	width 100%
+	height @width
+	z-index 10
+	background white
+
+	#circle
+		display flex
+		flex-direction column
+		justify-content center
+		align-items center
+		position absolute
+		background $colors-blue-primary
+		border-radius 50%
+		width 200px
+		height @width
+		z-index 0
+
+	#leaf-wrapper
+		#left
+			position relative
+			left 18px
+			top 3px
+
+		#right
+			position relative
+			top 3px
+			left 6px
+
+	#text-wrapper
+		position relative
+		top 26px

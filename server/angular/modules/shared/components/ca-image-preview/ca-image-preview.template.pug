@@ -1,0 +1,12 @@
+doctype html
+.content(#content)
+	header((click)="close()")
+		i.fa.fa-long-arrow-left(aria-hidden="true")
+		h4.title-image-preview Imagem do Veículo
+	section
+		ul
+			li
+				img(*ngIf="image != null", [src]="image")
+			li
+			li
+			li
