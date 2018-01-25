@@ -7,6 +7,9 @@
 I have deployed a clone of this repo at heroku level right on this link https://conta-azul.herokuapp.com/.
 Go a head and check it out dude.
 
+<br>
+
+
 > General information
 The application runs above ts-node which is nothing more than a strongly typed node version. 
 
@@ -22,12 +25,18 @@ For tests you can count on a new facebook library Jest. Check it out, it worth.
 
 I have used Figma and Proto.io to design extra layouts.
 
+<br>
+
+
 
 ### Instructions
 
 > How to install
 
 * Install all dependencies with yarn. This is a very important thing cause I have locked all my packages version in yarnlock file.
+
+<br>
+
 
 > How to use
 
