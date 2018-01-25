@@ -1,7 +1,7 @@
 # ContaAzul Challenge
 
 [![Build Status](https://travis-ci.org/darkfrontcode/conta-azul-challenge.svg?branch=master)](https://travis-ci.org/darkfrontcode/conta-azul-challenge)
-
+[![Heroku](https://heroku-badge.herokuapp.com/?app=conta-azul)](https://conta-azul.herokuapp.com)
 
 ### Description
 
