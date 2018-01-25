@@ -44,13 +44,10 @@ I have used Figma and Proto.io to design extra layouts.
 
 > How to use
 
-```
-npm start				// Serve the aplication in localhost:3000 in production mode
-npm run prod			// Serve the aplication in localhost:3000 in production mode
-npm run dev				// Triggers webpack-middlewares and serve application in localhost:3000 in development mode
-npm run dev:mon			// Just in case if you want to play around with nodemon
-npm run build			// build front-end application at public folder
-npm run test			// a delightful tests with jest according to documentation =}
-npm run test:watch		// delightful tests in watchmode
-
-```
+* npm start				=>  Serve the aplication in localhost:3000 in production mode
+* npm run prod			=>  Serve the aplication in localhost:3000 in production mode
+* npm run dev			=>  Triggers webpack-middlewares and serve application in localhost:3000 in development mode
+* npm run dev:mon		=>  Just in case if you want to play around with nodemon
+* npm run build			=>  build front-end application at public folder
+* npm run test			=>  a delightful tests with jest according to documentation =}
+* npm run test:watch	=>  delightful tests in watchmode
