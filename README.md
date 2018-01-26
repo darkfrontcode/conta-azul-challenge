@@ -7,7 +7,9 @@
 
 <p align="center">
 	<img src="https://github.com/darkfrontcode/conta-azul-challenge/blob/master/midias/01.gif">
+	</br>
 	<img src="https://github.com/darkfrontcode/conta-azul-challenge/blob/master/midias/02.gif">
+	</br>
 	<img src="https://github.com/darkfrontcode/conta-azul-challenge/blob/master/midias/03.gif">
 </p>
 
