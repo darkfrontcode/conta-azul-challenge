@@ -1,4 +1,4 @@
-/*! {copyright:[`DarkFrontCode`,`https://github.com/darkfrontcode`]} */
+/*! {copyright:[`DarkFrontCode`,`https://github.com/darkfrontcode/conta-azul-challenge`]} */
 webpackJsonp([1],{139:function(t,e,n){"use strict";/**
  * @license
  * Copyright Google Inc. All Rights Reserved.
