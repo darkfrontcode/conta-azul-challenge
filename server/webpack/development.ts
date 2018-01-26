@@ -19,10 +19,43 @@ export default merge(common, <any>{
 			path.join(__dirname, '../angular/plans/development')
 		]
 	},
-
+	
 	output: {
 
 		publicPath: `http://localhost:${ GLOBAL.PORT }/`
+
+	},
+
+	module: {
+
+		rules: [
+			{
+				test: /\.styl$/,
+				use: [
+					'to-string-loader',
+					'style-loader',
+					{ 
+						loader: 'css-loader', 
+						options: { 
+							sourceMap: false,
+							importLoaders: 2
+						}
+					},
+					{
+						loader: 'postcss-loader',
+						options: { sourceMap: true }
+					},
+					{
+						loader: 'stylus-loader',
+						options: {
+							import: [
+								path.join(__dirname, '../stylus/variables')
+							]
+						}
+					}
+				]
+			}
+		]
 
 	},
 

@@ -58,7 +58,7 @@ export class CALoaderComponent implements OnChanges
 					.set(this.element.nativeElement, { display: 'flex' })
 					.add(
 						new Array<Animation>(
-							SizeAnimations.size(this.circle.nativeElement, 0, 10, 1.5).delay(.5),
+							SizeAnimations.size(this.circle.nativeElement, 0, 20, 1.5).delay(.5),
 							LeafAnimations.wind(this.left.nativeElement, this.right.nativeElement),
 							FadeAnimations.fadeUp(this.contaAnimation.nativeElement, 0, 0, 1).delay(3.25),
 							FadeAnimations.fadeUp(this.azulAnimation.nativeElement, 0, 0, 1).delay(3.25)

@@ -1,6 +1,6 @@
 {
   "name": "conta-azul-challenge",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "scripts": {
     "start": "npm run prod",
     "dev": "npm run pre-task && ts-node --cache-directory .tscache ./server/express/plans/development.ts --colors",
@@ -59,6 +59,7 @@
     "chalk": "^2.3.0",
     "copy-webpack-plugin": "^4.3.1",
     "core-js": "^2.5.3",
+    "css-entry-webpack-plugin": "^1.0.0-beta.4",
     "css-loader": "^0.28.9",
     "cssnano": "^3.10.0",
     "express": "^4.16.2",

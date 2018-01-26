@@ -1,7 +1,6 @@
 import * as path 					from 'path'
 import * as webpack 				from 'webpack'
 import * as copy 					from 'copy-webpack-plugin'
-import * as ExtractTextPlugin		from 'extract-text-webpack-plugin'
 
 export default new Object({
 
@@ -49,36 +48,6 @@ export default new Object({
 					'pug-html-loader'
 				]
 			},
-			{
-				test: /\.styl$/,
-				use: ['to-string-loader'].concat(
-					<any>ExtractTextPlugin.extract({
-						fallback: "style-loader",
-						use: [
-							{ 
-								loader: 'css-loader', 
-								options: { 
-									sourceMap:true,
-									importLoaders: 1,
-									localIdentName: '[path]___[name]__[local]___[hash:base64:5]'
-								}
-							},
-							{
-								loader: 'postcss-loader',
-								options: { sourceMap: true }
-							},
-							{
-								loader: 'stylus-loader',
-								options: {
-									import: [
-										path.join(__dirname, '../stylus/variables')
-									]
-								}
-							}
-						]
-					})
-				)
-			}
 			
 		]
 	},
@@ -95,8 +64,6 @@ export default new Object({
 				to: path.join(__dirname, '../../public/assets')
 			}
 		]),
-
-		new ExtractTextPlugin("[name].css"),
 
 	]
 })
