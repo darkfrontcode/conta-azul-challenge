@@ -5,13 +5,14 @@
     "start": "npm run prod",
     "dev": "npm run pre-task && ts-node --cache-directory .tscache ./server/express/plans/development.ts --colors",
     "dev:mon": "nodemon --exec npm run dev",
-    "prod": "npm run build && ts-node ./server/express/plans/production.ts --colors",
+    "prod": "ts-node ./server/express/plans/production.ts --colors",
     "build": "npm run pre-task && webpack --config ./server/webpack/production.ts --progress --colors",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:ci": "jest --runInBand",
     "clean": "rm -rf ./public",
-    "pre-task": "npm run clean && npm run test"
+    "pre-task": "npm run clean && npm run test",
+    "preinstall": "npm run clean && npm run test && npm run build"
   },
   "jest": {
     "moduleFileExtensions": [
