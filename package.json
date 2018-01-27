@@ -13,7 +13,7 @@
     "test:ci": "jest --runInBand",
     "clean": "rm -rf ./public",
     "pre-task": "npm run clean && npm run test",
-    "postinstall": "npm run test:ci && npm run clean && webpack:build"
+    "postinstall": "npm run test:ci && npm run clean && npm run webpack:build"
   },
   "jest": {
     "moduleFileExtensions": [
