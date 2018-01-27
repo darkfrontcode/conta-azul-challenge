@@ -4,6 +4,7 @@
 [![Heroku](https://heroku-badge.herokuapp.com/?app=conta-azul)](https://conta-azul.herokuapp.com)
 [![node (scoped with tag)](https://img.shields.io/node/v/@stdlib/stdlib/latest.svg)](https://github.com/darkfrontcode/conta-azul-challenge)
 [![Coveralls github](https://img.shields.io/coveralls/github/jekyll/jekyll.svg)](https://github.com/darkfrontcode/conta-azul-challenge)
+[![Docker Build Status](https://img.shields.io/docker/build/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/darkfrontcode/conta-azul/)
 
 </br>
 
@@ -23,7 +24,14 @@
 
 > A simple CRUD actions vehicles dashboard
 
-I have deployed a clone of this repo at heroku level right on this link https://conta-azul.herokuapp.com/.
+I have deployed a clone of this repo at heroku on the link below:
+<br>
+https://conta-azul.herokuapp.com/.
+
+
+I also have a dockerhub image from this repo if you want to play around with docker.
+<br>
+https://hub.docker.com/r/darkfrontcode/conta-azul/
 
 <br>
 
