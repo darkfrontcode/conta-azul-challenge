@@ -12,7 +12,6 @@
     "test:ci": "jest --runInBand",
     "clean": "rm -rf ./public",
     "pre-task": "npm run clean && npm run test",
-    "preinstall": "yarn add jest",
     "postinstall": "npm run pre-task && npm run build"
   },
   "jest": {
