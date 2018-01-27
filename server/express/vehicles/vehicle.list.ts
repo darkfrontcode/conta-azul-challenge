@@ -5,7 +5,7 @@ import { Fusca } from './fusca'
 
 const vehicleRegistered = new Array<IVehicle>(Gol, Fox, Fusca)
 
-export const VehicleList = Array.from(new Array().constructor(30)).reduce((all:Array<IVehicle>, item:IVehicle, index:number) => {
+export const VehicleList = Array.from(new Array(30)).reduce((all:Array<IVehicle>, item:IVehicle, index:number) => {
 	all.push({ ...vehicleRegistered[Math.floor((Math.random() * vehicleRegistered.length))], id: (index + 1) })
 	return all
 }, new Array<IVehicle>())
