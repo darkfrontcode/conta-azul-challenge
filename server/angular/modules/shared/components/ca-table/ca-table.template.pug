@@ -33,5 +33,6 @@ ca-pagination.mt-6(
 	[offset]="offset",
 	[(start)]="start", 
 	[(end)]="end", 
-	[max]="data.length"
+	[max]="data.length",
+	(callback)="resetSelection()"
 )
