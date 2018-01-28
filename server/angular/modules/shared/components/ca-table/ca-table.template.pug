@@ -13,7 +13,7 @@ table
 	tbody
 		tr(*ngFor="let item of data | slice:start:end", [ngClass]="activeClass(item.check)")
 			td
-				ca-checkbox.pl-2([(state)]="item.check")
+				ca-checkbox.pl-2([(state)]="item.check", (click)="unmarkCheckbox()")
 			td {{ item.placa }}
 			td {{ item.modelo }}
 			td {{ item.marca }}

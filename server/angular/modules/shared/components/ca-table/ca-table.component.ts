@@ -38,8 +38,19 @@ export class CATableComponent implements OnChanges
 	{
 		const { currentValue:current } = changes.data
 
-		if(!current.some((vehicle: IVehicleTrackable) => vehicle.check))
+		if(
+			!current
+				.slice(this.start, this.end)
+				.some((vehicle: IVehicleTrackable) => vehicle.check)
+		)
 		{
+
+			if(this.start == current.length)
+			{
+				this.start -= this.offset
+				this.end -= this.offset
+			}
+
 			this._checkboxState = false
 		}
 
@@ -60,6 +71,12 @@ export class CATableComponent implements OnChanges
 		this._checkboxState = state
 		this.data = this.selectAll(state)
 		this.dataChange.emit(this.data)
+	}
+
+	public unmarkCheckbox()
+	{
+		console.log('dasdsads')
+		this._checkboxState = false
 	}
 
 	public open(url: string) : void
@@ -113,13 +130,7 @@ export class CATableComponent implements OnChanges
 
 	public uncheckAll() : void
 	{
-		this.data = this.data.map((vehicle:IVehicleTrackable) => this.uncheck(vehicle))
-	}
-
-	public uncheck(vehicle:IVehicleTrackable) : IVehicleTrackable
-	{
-		vehicle.check = false
-		return vehicle
+		this.data = this.data.map((vehicle:IVehicleTrackable) => this.changeSelection(vehicle, false))
 	}
 
 }
