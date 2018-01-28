@@ -21,6 +21,9 @@ export class CAPaginationComponent
 	public max: number
 
 	@Output()
+	public callback = new EventEmitter<void>()
+
+	@Output()
 	public startChange = new EventEmitter<number>()
 
 	@Output()
@@ -57,6 +60,7 @@ export class CAPaginationComponent
 	{
 		this.startChange.emit(this.start)
 		this.endChange.emit(this.end)
+		this.callback.emit()
 	}
 
 	public isActive(index:number) : string

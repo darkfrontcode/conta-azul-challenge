@@ -105,4 +105,21 @@ export class CATableComponent implements OnChanges
 		return vehicle
 	}
 
+	public resetSelection() : void
+	{
+		this._checkboxState = false
+		this.uncheckAll()
+	}
+
+	public uncheckAll() : void
+	{
+		this.data = this.data.map((vehicle:IVehicleTrackable) => this.uncheck(vehicle))
+	}
+
+	public uncheck(vehicle:IVehicleTrackable) : IVehicleTrackable
+	{
+		vehicle.check = false
+		return vehicle
+	}
+
 }

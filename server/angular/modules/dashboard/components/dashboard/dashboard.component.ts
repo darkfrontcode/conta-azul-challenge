@@ -85,7 +85,7 @@ export class DashboardComponent implements OnInit
 
 	public showRemove() : boolean
 	{
-		return this.vehicles.some((vehicle:IVehicleTrackable) => (vehicle.check))
+		return this.vehicles.some((vehicle:IVehicleTrackable) => vehicle.check)
 	}
 
 	public showVehiclesList() : boolean
