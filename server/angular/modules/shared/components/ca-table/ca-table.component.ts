@@ -8,6 +8,12 @@ import {
 } 													from '@angular/core'
 import { IVehicleTrackable } 						from 'models'
 import { CAImagePreviewService }					from '../ca-image-preview/ca-image-preview.service'
+import { ArrayUtils }								from '../../services/array.utils'
+
+enum PROPS
+{
+	CHECK = 'check'
+}
 
 @Component({
 	selector: 'ca-table',
@@ -37,14 +43,10 @@ export class CATableComponent implements OnChanges
 	ngOnChanges(changes: SimpleChanges)
 	{
 		const { currentValue:current } = changes.data
+		const selection = ArrayUtils.sliceSome(current, this.start, this.end, PROPS.CHECK, true)
 
-		if(
-			!current
-				.slice(this.start, this.end)
-				.some((vehicle: IVehicleTrackable) => vehicle.check)
-		)
+		if(!selection)
 		{
-
 			if(this.start == current.length)
 			{
 				this.start -= this.offset
@@ -85,51 +87,18 @@ export class CATableComponent implements OnChanges
 
 	public selectAll(state: boolean) : Array<IVehicleTrackable>
 	{
-		return this.removeDuplicates(
-					this.merge(
-						new Array<any>(
-							this.data, 
-							this.changeSelectionSlice(this.data, state)
-						)
-					)
-				)
+		const sliceTrack 		= ArrayUtils.sliceTrack(this.data, this.start, this.end)
+		const changeProps 		= ArrayUtils.changeProps(sliceTrack, PROPS.CHECK, state)
+		const arrays 			= new Array<any>(this.data, changeProps)
+		
+		return ArrayUtils.unique(ArrayUtils.merge(arrays))
 	}
 
-	public removeDuplicates<T>(arr: Array<T>) : Array<T>
-	{
-		return new Array<T>(...new Set(arr))
-	}
-
-	public merge<T>(arr: Array<Array<T>>) : Array<T>
-	{
-		return arr.reduce((all:Array<any>, item:any, index:number) => {
-			all.push(...item)
-			return all
-		}, new Array<T>())
-	}
-
-	public changeSelectionSlice(vehicles: Array<IVehicleTrackable>, state: boolean) : Array<IVehicleTrackable>
-	{
-		return vehicles
-				.slice(this.start, this.end)
-				.map((vehicle: IVehicleTrackable) => this.changeSelection(vehicle, state))
-	}
-
-	public changeSelection(vehicle: IVehicleTrackable, state: boolean) : IVehicleTrackable
-	{
-		vehicle.check = state
-		return vehicle
-	}
 
 	public resetSelection() : void
 	{
 		this._checkboxState = false
-		this.uncheckAll()
-	}
-
-	public uncheckAll() : void
-	{
-		this.data = this.data.map((vehicle:IVehicleTrackable) => this.changeSelection(vehicle, false))
+		this.data = ArrayUtils.changeProps(this.data, PROPS.CHECK, false)
 	}
 
 }
