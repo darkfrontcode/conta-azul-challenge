@@ -75,7 +75,6 @@ export class CATableComponent implements OnChanges
 
 	public unmarkCheckbox()
 	{
-		console.log('dasdsads')
 		this._checkboxState = false
 	}
 

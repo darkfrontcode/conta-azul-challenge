@@ -1,6 +1,6 @@
 {
   "name": "conta-azul-challenge",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "scripts": {
     "start": "npm run prod",
     "dev": "npm run pre-task && ts-node --cache-directory .tscache ./server/express/plans/development.ts --colors",
