@@ -2,9 +2,9 @@
 
 [![Build Status](https://travis-ci.org/darkfrontcode/conta-azul-challenge.svg?branch=master)](https://travis-ci.org/darkfrontcode/conta-azul-challenge)
 [![Heroku](https://heroku-badge.herokuapp.com/?app=conta-azul)](https://conta-azul.herokuapp.com)
-[![node (scoped with tag)](https://img.shields.io/node/v/@stdlib/stdlib/latest.svg)](https://github.com/darkfrontcode/conta-azul-challenge)
-[![Coveralls github](https://img.shields.io/coveralls/github/jekyll/jekyll.svg)](https://github.com/darkfrontcode/conta-azul-challenge)
 [![Docker Build Status](https://img.shields.io/docker/build/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/darkfrontcode/conta-azul/)
+[![Coveralls github](https://img.shields.io/coveralls/github/jekyll/jekyll.svg)](https://github.com/darkfrontcode/conta-azul-challenge)
+[![node (scoped with tag)](https://img.shields.io/node/v/@stdlib/stdlib/latest.svg)](https://github.com/darkfrontcode/conta-azul-challenge)
 
 </br>
 
