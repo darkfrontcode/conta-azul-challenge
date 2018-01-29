@@ -1,7 +1,7 @@
 doctype html
 .content(#content)
 	h2.title-create-vehicle.pt-10.pb-10.pl-5.pr-5 Criar Veículo
-	form([formGroup]="form", novalidate)
+	form([formGroup]="form", (submit)="create(form.value)", novalidate)
 
 		ca-input(
 			name="placa",
@@ -91,5 +91,5 @@ doctype html
 		)
 
 		.button-wrapper.pl-5.pr-5.pt-5.pb-5
-			button.btn-secondary((click)="close()") Cancelar
-			button.btn-primary((click)="create(form.value)", [disabled]="!form.valid") Criar
+			button.btn-secondary(type="button", (click)="close(); false") Cancelar
+			button.btn-primary(type="submit", [disabled]="!form.valid") Criar
