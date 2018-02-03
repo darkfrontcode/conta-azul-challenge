@@ -11,42 +11,28 @@ import { CAImagePreviewService } 	from '../../../shared/components/ca-image-prev
 })
 export class DashboardComponent implements OnInit
 {
-	public createVehicleState: boolean
 	private _search: string
+
+	public vehicles: Array<IVehicleTrackable>
+	public queryList: Array<IVehicleTrackable>
+	public createVehicleState = false
 
 	constructor(
 		private vehicleService: VehicleService,
 		private imagePreviewService: CAImagePreviewService
 	)
 	{
-		this.createVehicleState = false
+		
 	}
 
 	ngOnInit() : void
 	{
-		this.vehicleService.requestVehicles()
-	}
+		const { vehicles$, queryList$ } = this.vehicleService
 
-	get vehicles()
-	{
-		return this.vehicleService.vehicles
+		vehicles$.subscribe(vehicles => (this.vehicles = vehicles))
+		queryList$.subscribe(query => (this.queryList = query))
 	}
-
-	set vehicles(vehicles: Array<IVehicleTrackable>)
-	{
-		this.vehicleService.vehicles = vehicles
-	}
-
-	get queryList()
-	{
-		return this.vehicleService.queryList
-	}
-
-	set queryList(query:Array<IVehicleTrackable> | null)
-	{
-		this.vehicleService.queryList
-	}
-
+	
 	get imagePreviewState()
 	{
 		return this.imagePreviewService.state

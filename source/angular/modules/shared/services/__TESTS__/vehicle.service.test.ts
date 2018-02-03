@@ -1,6 +1,6 @@
-import { VehicleService } 						from './vehicle.service'
-import { IVehicle, IVehicleTrackable }			from '../models'
-import { Gol, Fox, Fusca } 						from '../vehicles'
+import { VehicleService } 						from '../vehicle.service'
+import { IVehicle, IVehicleTrackable }			from '../../models'
+import { Gol, Fox, Fusca } 						from '../../vehicles'
 
 const http = null
 let vehicleService:VehicleService

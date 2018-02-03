@@ -1,5 +1,7 @@
 import { Injectable } 						from '@angular/core'
 import { Http } 							from '@angular/http'
+import { BehaviorSubject }					from 'rxjs/BehaviorSubject'
+import { Observable } 						from 'rxjs/Observable'
 import { URLTYPES } 						from '../enums'
 import { 
 	IVehicle, 
@@ -10,21 +12,42 @@ import {
 @Injectable()
 export class VehicleService
 {
-
-	public vehicles: Array<IVehicleTrackable>
-	public queryList: Array<IVehicleTrackable> | null
+	private _vehicles$ 		= new BehaviorSubject<Array<IVehicleTrackable>>(new Array<IVehicleTrackable>())
+	private _queryList$ 	= new BehaviorSubject<Array<IVehicleTrackable> | null>(null)
+	
+	public vehicles$ 		= this._vehicles$.asObservable()
+	public queryList$ 		= this._queryList$.asObservable()
 
 	constructor(private http: Http)
 	{
-		this.vehicles = new Array<IVehicleTrackable>()
+
 	}
 
-	public requestVehicles() : void
+	get vehicles()
 	{
-		this.http
+		return this._vehicles$.getValue()
+	}
+
+	set vehicles(vehicles: Array<IVehicleTrackable>)
+	{
+		this._vehicles$.next(vehicles)
+	}
+
+	get queryList()
+	{
+		return this._queryList$.getValue()
+	}
+
+	set queryList(vehicles:Array<IVehicleTrackable> | null)
+	{
+		this._queryList$.next(vehicles)
+	}
+
+	public requestVehicles() : Observable<Array<IVehicleTrackable>>
+	{
+		return this.http
 			.get(URLTYPES.VEHICLES)
-			.map(res => res.json())
-			.subscribe((res:Array<IVehicle>) => this.vehicles = this.convertArrayToTrackable(res))
+			.map(res => this.convertArrayToTrackable(res.json()))
 	}
 
 	public convertArrayToTrackable(vehicles: Array<IVehicle>) : Array<IVehicleTrackable>
@@ -71,8 +94,8 @@ export class VehicleService
 	}
 
 	public add(vehicle:IVehicle)
-	{
-		this.vehicles.push(this.convertToTrackable(this.buildVehicle(vehicle)))
+	{	
+		this.vehicles = new Array<IVehicleTrackable>(...this.vehicles, this.convertToTrackable(this.buildVehicle(vehicle)))
 	}
 
 	public convertToTrackable(vehicle:IVehicle) : IVehicleTrackable

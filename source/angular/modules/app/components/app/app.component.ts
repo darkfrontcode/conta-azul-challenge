@@ -1,5 +1,13 @@
-import { Component, ViewEncapsulation, OnInit } 	from '@angular/core'
-import { CALoaderService }							from '../../../shared/components/ca-loader/ca-loader.service'
+import { 
+	Component, 
+	ViewEncapsulation, 
+	OnInit, 
+	AfterViewInit 
+} 									from '@angular/core'
+import { VehicleService } 			from '../../../shared/services/vehicle.service'
+import { CALoaderService }			from '../../../shared/components/ca-loader/ca-loader.service'
+import { Observable } 				from 'rxjs/Observable'
+import { CALoaderAnimations }		from '../../../shared/components/ca-loader/ca-loader.animations'
 
 @Component({
 	selector: 'app',
@@ -7,30 +15,49 @@ import { CALoaderService }							from '../../../shared/components/ca-loader/ca-l
 	styleUrls: ['./app.style.styl'],
 	encapsulation: ViewEncapsulation.None
 })
-export class AppComponent implements OnInit
+export class AppComponent implements OnInit, AfterViewInit
 {
-	constructor(private loaderService: CALoaderService)
+	private _timer: Observable<number>
+
+	public loader: boolean
+	public DOMReady: boolean
+
+	constructor(
+		private loaderService: CALoaderService,
+		private vehicleService: VehicleService
+	)
 	{
 
 	}
 
 	ngOnInit()
 	{
-		setTimeout(() => (this.loaderState = true))
+		const { state$, DOMReady$ } = this.loaderService
+
+		state$.subscribe(state => (this.loader = state))
+		DOMReady$.subscribe(state => (this.DOMReady = state))
+
 	}
 
-	get loaderState()
-	{
-		return this.loaderService.state
-	}
-
-	set loaderState(state: boolean)
+	ngAfterViewInit(): void
 	{
 		this.loaderService.state = true
+		this._timer = Observable.timer(CALoaderAnimations.TIMER)
+
+		Observable
+			.forkJoin(new Array<Observable<any>>(
+				this.vehicleService.requestVehicles(),
+				this._timer
+			))
+			.subscribe(res => {
+
+				console.log('done')
+
+				this.loaderService.state = false
+				this.loaderService.DOMReady = true
+				this.vehicleService.vehicles = res.shift()
+
+			})
 	}
 
-	get DOMReady()
-	{
-		return this.loaderService.DOMReady
-	}
 }

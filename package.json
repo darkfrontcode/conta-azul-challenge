@@ -15,17 +15,6 @@
     "clean": "rm -rf ./build",
     "pre-task": "npm run clean && npm run test"
   },
-  "jest": {
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
-    "transform": {
-      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(spec|test).(ts|tsx|js)$"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",

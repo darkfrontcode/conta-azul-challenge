@@ -1,7 +1,7 @@
 import 'jest'
-import { ArrayUtils } 		from './array.utils'
-import { IVehicle }			from '../models'
-import { Gol, Fox, Fusca } 	from '../vehicles'
+import { ArrayUtils } 		from '../array.utils'
+import { IVehicle }			from '../../models'
+import { Gol, Fox, Fusca } 	from '../../vehicles'
 
 let vehicles: Array<IVehicle>
 let vehicleGroup: Array<Array<IVehicle>>

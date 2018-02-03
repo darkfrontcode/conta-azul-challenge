@@ -1,4 +1,4 @@
-import { ValidationsService } from './validations.service'
+import { ValidationsService } from '../validations.service'
 
 let validations, 
 	validationsService

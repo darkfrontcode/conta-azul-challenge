@@ -6,11 +6,7 @@ import {
 	OnChanges,
 	SimpleChanges
 } 										from '@angular/core'
-import { LeafAnimations } 				from '../../../shared/animations/leaf.animations'
-import { SizeAnimations }				from '../../../shared/animations/size.animations'
-import { FadeAnimations }				from '../../../shared/animations/fade.animations'
-import { TimelineMax, Animation } 		from 'gsap'
-import { CALoaderService }				from '../ca-loader/ca-loader.service'
+import { CALoaderAnimations }			from './ca-loader.animations'
 
 @Component({
 	selector: 'ca-loader',
@@ -37,48 +33,37 @@ export class CALoaderComponent implements OnChanges
 	@ViewChild('circle')
 	public circle:ElementRef
 
-	constructor(
-		private element:ElementRef,
-		private loaderService: CALoaderService
-	)
+	constructor(private element:ElementRef)
 	{
 		
 	}
 
 	ngOnChanges(changes: SimpleChanges)
 	{	
+		const { currentValue:current } = changes.state
 
-		const { previousValue:previous, currentValue:current, firstChange:first } = changes.state
-
-		if(!first)
-		{
-			if(!!current && !previous)
-			{
-				new TimelineMax({ onComplete: this.callback.bind(this) })
-					.set(this.element.nativeElement, { display: 'flex' })
-					.add(
-						new Array<Animation>(
-							SizeAnimations.size(this.circle.nativeElement, 0, 20, 1.5).delay(.5),
-							LeafAnimations.wind(this.left.nativeElement, this.right.nativeElement),
-							FadeAnimations.fadeUp(this.contaAnimation.nativeElement, 0, 0, 1).delay(3.25),
-							FadeAnimations.fadeUp(this.azulAnimation.nativeElement, 0, 0, 1).delay(3.25)
-						)
-					)
-					.play()
-			}
-	
-			if(!!previous && !current) 
-			{	
-				new TimelineMax()
-					.to(this.element.nativeElement, 1, { display:'none', opacity: 0 })
-					.play()
-			}
+		if(current)
+		{	
+			CALoaderAnimations.enter(this.buildAnimationElements()).play()
 		}
+
+		if(!current)
+		{
+			CALoaderAnimations.leave(this.element.nativeElement).play()
+		}
+		
 	}
 
-	private callback()
+	public buildAnimationElements() : CALoaderAnimations.AnimationElements
 	{
-		this.loaderService.state = false
-		this.loaderService.DOMReady = true
+		return new CALoaderAnimations.AnimationElements(
+			this.element.nativeElement,
+			this.circle.nativeElement,
+			this.left.nativeElement,
+			this.right.nativeElement,
+			this.contaAnimation.nativeElement,
+			this.azulAnimation.nativeElement
+		)
 	}
+
 }
