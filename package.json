@@ -11,7 +11,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:ci": "jest --runInBand",
-    "clean": "rm -rf ./public",
+    "clean": "rm -rf ./build",
     "pre-task": "npm run clean && npm run test",
     "postinstall": "npm run test:ci && npm run clean && npm run webpack:build"
   },
@@ -24,13 +24,7 @@
     "transform": {
       "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
-    "testRegex": "(spec|test).(ts|tsx|js)$",
-    "moduleNameMapper": {
-      "models": "<rootDir>/server/express/models/index.ts",
-      "builders": "<rootDir>/server/express/builders/index.ts",
-      "vehicles": "<rootDir>/server/express/vehicles/index.ts",
-      "api": "<rootDir>/server/express/controllers/api/index.ts"
-    }
+    "testRegex": "(spec|test).(ts|tsx|js)$"
   },
   "keywords": [],
   "author": "",

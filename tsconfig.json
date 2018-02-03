@@ -21,16 +21,10 @@
 		"typeRoots": [
             "./node_modules/@types"
 		],
-		"baseUrl": ".",
-		"paths": {
-            "models": ["server/express/models/index.ts"],
-			"builders": ["server/express/builders/index.ts"],
-			"vehicles": ["server/express/vehicles/index.ts"],
-			"api": ["server/express/controllers/api/index.ts"]
-        }
+		"baseUrl": "."
 	},
     "include": [
-		"./server/angular/*"
+		"./source/angular/*"
     ],
 	"exclude": [
 		"./node_modules"
