@@ -1,6 +1,6 @@
 import { Component, OnInit } 		from '@angular/core'
 
-import { IVehicleTrackable }		from 'models'
+import { IVehicleTrackable }		from '../../../shared/models'
 import { VehicleService } 			from '../../../shared/services/vehicle.service'
 import { CAImagePreviewService } 	from '../../../shared/components/ca-image-preview/ca-image-preview.service'
 

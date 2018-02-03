@@ -6,7 +6,7 @@ import {
 	OnChanges,
 	SimpleChanges
 } 													from '@angular/core'
-import { IVehicleTrackable } 						from 'models'
+import { IVehicleTrackable } 						from '../../../shared/models'
 import { CAImagePreviewService }					from '../ca-image-preview/ca-image-preview.service'
 import { ArrayUtils }								from '../../services/array.utils'
 

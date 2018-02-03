@@ -6,22 +6,13 @@ export default new Object({
 
 	output: {
 
-		path: path.join(__dirname, '../../public'),
+		path: path.join(__dirname, '../../build'),
 		filename: "[name].js",
 		chunkFilename: '[id].chunk.js'
 
 	},
 
 	resolve: {
-
-		alias: {
-
-			models: path.join(__dirname, '../express/models'),
-			builders: path.join(__dirname, '../express/builders'),
-			vehicles: path.join(__dirname, '../express/vehicles'),
-			api: path.join(__dirname, '../express/controllers/api')
-
-		},
 
 		extensions: [ '.js', '.ts', '.pug', '.styl']
 
@@ -61,7 +52,11 @@ export default new Object({
 		new copy([
 			{
 				from: path.join(__dirname, '../assets'),
-				to: path.join(__dirname, '../../public/assets')
+				to: path.join(__dirname, '../../build/assets')
+			},
+			{
+				from: path.join(__dirname, '../vendors'),
+				to: path.join(__dirname, '../../build/vendors')
 			}
 		]),
 

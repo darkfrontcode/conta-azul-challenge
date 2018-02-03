@@ -3,7 +3,6 @@ import * as webpack 				from 'webpack'
 import * as merge 					from 'webpack-merge'
 import * as ExtractTextPlugin		from 'extract-text-webpack-plugin'
 import common 						from './common'
-import { GLOBAL }					from '../express/global'
 
 
 export default merge(common, <any>{

@@ -1,9 +1,7 @@
-import { TimelineMax, Expo } from "gsap"
-
+import { TimelineMax, Expo } from 'gsap'
 
 export namespace LeafAnimations
 {
-
 	export const MorphSVGPlugin = window['MorphSVGPlugin']
 
 	export interface IWindPath

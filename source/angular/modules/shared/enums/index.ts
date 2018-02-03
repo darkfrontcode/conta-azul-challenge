@@ -1,0 +1,1 @@
+export { URLTYPES } from './url-types.enum'

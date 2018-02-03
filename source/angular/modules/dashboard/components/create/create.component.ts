@@ -11,7 +11,7 @@ import {
 import { FormBuilder, FormGroup, Validators } 		from '@angular/forms'
 import { FluidAnimations } 							from '../../../shared/animations/fluid.animation'
 import { VehicleService } 							from '../../../shared/services/vehicle.service'
-import { IVehicle }									from 'models'
+import { IVehicle }									from '../../../shared/models'
 import { ValidationsService } 						from '../../../shared/services/validations.service'
 
 @Component({

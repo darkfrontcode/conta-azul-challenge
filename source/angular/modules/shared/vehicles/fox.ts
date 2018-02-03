@@ -1,0 +1,11 @@
+import { VehicleBuilder } from '../models/vehicle.builder'
+
+export const Fox = VehicleBuilder.builder()
+	.withId(2)
+	.withCombustivel("Gasolina")
+	.withImagem(null)
+	.withMarca("Volkswagen")
+	.withModelo("Fox")
+	.withPlaca("FOX-4125")
+	.withValor(20000)
+	.build()

@@ -1,18 +1,16 @@
 import { VehicleService } 						from './vehicle.service'
-import { IVehicle, IVehicleTrackable }			from 'models'
-import { Gol, Fox, Fusca } 						from 'vehicles'
+import { IVehicle, IVehicleTrackable }			from '../models'
+import { Gol, Fox, Fusca } 						from '../vehicles'
 
 const http = null
 let vehicleService:VehicleService
-let vehicles: Array<IVehicle>
-let vehicle: IVehicle | IVehicleTrackable
+let vehicles: Array<IVehicleTrackable>
 
 beforeEach(() => {
 
 	vehicleService = new VehicleService(http)
 	vehicles = vehicleService.convertArrayToTrackable(new Array<IVehicle>(Gol, Fox, Fusca))
 	vehicleService.vehicles = vehicles
-	vehicle = null
 
 })
 
@@ -81,7 +79,7 @@ describe('VehicleService', () => {
 		test('success', () => {
 
 			const newCar = { ...Fox }
-			delete newCar.check
+			delete newCar['check']
 			const trackable = vehicleService.convertToTrackable(newCar)
 
 			expect(trackable).toEqual(Fox)

@@ -1,9 +1,11 @@
 import { Injectable } 						from '@angular/core'
 import { Http } 							from '@angular/http'
-
-import { IVehicle, IVehicleTrackable }		from 'models'
-import { VehicleBuilder } 					from 'builders'
-import { VehiclesController }				from 'api'
+import { URLTYPES } 						from '../enums'
+import { 
+	IVehicle, 
+	IVehicleTrackable, 
+	VehicleBuilder 
+}											from '../models'
 
 @Injectable()
 export class VehicleService
@@ -20,7 +22,7 @@ export class VehicleService
 	public requestVehicles() : void
 	{
 		this.http
-			.get(VehiclesController.url)
+			.get(URLTYPES.VEHICLES)
 			.map(res => res.json())
 			.subscribe((res:Array<IVehicle>) => this.vehicles = this.convertArrayToTrackable(res))
 	}

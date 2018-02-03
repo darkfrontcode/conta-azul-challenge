@@ -1,14 +1,15 @@
+import 'jest'
 import { ArrayUtils } 		from './array.utils'
-import { IVehicle }			from 'models'
-import { Gol, Fox, Fusca } 	from 'vehicles'
+import { IVehicle }			from '../models'
+import { Gol, Fox, Fusca } 	from '../vehicles'
 
 let vehicles: Array<IVehicle>
-let vehicleGroup: Array<IVehicle>
+let vehicleGroup: Array<Array<IVehicle>>
 
 beforeEach(() => {
 
 	vehicles = new Array<IVehicle>(Gol, Fox, Fusca)
-	vehicleGroup = new Array<IVehicle>(new Array<IVehicle>(...vehicles), vehicles)
+	vehicleGroup = new Array<Array<IVehicle>>(vehicles, vehicles)
 
 })
 
