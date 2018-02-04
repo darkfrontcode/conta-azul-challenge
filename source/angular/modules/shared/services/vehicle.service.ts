@@ -52,7 +52,7 @@ export class VehicleService
 		this.vehicles = vehicles
 	}
 
-	public search(query:string)
+	public search(query:string) : void
 	{
 		const matches = new Array<IVehicleTrackable>()
 		const regex = new RegExp(query, 'i')
@@ -76,7 +76,7 @@ export class VehicleService
 		return <IVehicleTrackable>this.vehicles.filter(vehicle => vehicle.id === id).pop()
 	}
 
-	public remove()
+	public remove() : void
 	{
 		this.http
 			.delete(URLTYPES.VEHICLES, new RequestOptions({ 
@@ -89,7 +89,7 @@ export class VehicleService
 			})
 	}
 
-	public add(vehicle:IVehicle)
+	public add(vehicle:IVehicle) : void
 	{	
 		const newVehicle = this.utility.buildVehicle(vehicle, this.vehicles)
 
@@ -101,7 +101,7 @@ export class VehicleService
 			))
 	}
 
-	private updateQueryList()
+	private updateQueryList() : void
 	{
 		if(this.queryList != null)
 		{

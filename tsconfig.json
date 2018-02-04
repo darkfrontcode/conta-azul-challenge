@@ -16,38 +16,3 @@
 		"allowJs": true
     }
 }
-
-
-// TODO: remove
-// {
-// 	"disableCompileOnSave": true,
-// 	"compilerOptions": {
-// 		"emitDecoratorMetadata": true,
-// 		"experimentalDecorators": true,
-// 		"importHelpers": true,
-// 		"lib": [ "es2015", "dom", "es2015.collection", "es2015.iterable" ],
-// 		"downlevelIteration": true,
-// 		"module": "commonjs",
-// 		"target": "es5",
-// 		"moduleResolution": "node",
-// 		"noImplicitAny": true,
-// 		"noUnusedLocals": true,
-// 		"strictNullChecks": true,
-// 		"pretty": true,
-// 		"removeComments": true,
-// 		"sourceMap": true,
-// 		"suppressImplicitAnyIndexErrors": true,
-// 		"allowSyntheticDefaultImports": true,
-// 		"allowJs": true,
-// 		"typeRoots": [
-//             "./node_modules/@types"
-// 		],
-// 		"baseUrl": "."
-// 	},
-//     "include": [
-// 		"./source/angular/*"
-//     ],
-// 	"exclude": [
-// 		"./node_modules"
-// 	]
-// }

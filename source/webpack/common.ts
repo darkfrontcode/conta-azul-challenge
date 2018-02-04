@@ -1,8 +1,15 @@
 import * as path 					from 'path'
 import * as webpack 				from 'webpack'
 import * as copy 					from 'copy-webpack-plugin'
+import * as HtmlWebpackPlugin		from 'html-webpack-plugin'
 
 export default new Object({
+
+	entry: {
+		'polyfills': path.join(__dirname, '../angular/utils/polyfills'),
+		'vendor': path.join(__dirname, '../angular/utils/vendor'),
+		'main': path.join(__dirname, '../angular/plans/development'),
+	},
 
 	output: {
 
@@ -48,6 +55,13 @@ export default new Object({
 		new webpack.optimize.CommonsChunkPlugin(
 			new Object({ name: ['main', 'vendor', 'polyfills'] })
 		),
+
+		new HtmlWebpackPlugin({
+			template: path.join(__dirname, '../pug/template.pug'),
+			filename: 'index.html',
+			favicon: path.join(__dirname, '../assets/favicon.ico'),
+			inject: true
+		}),
 
 		new copy([
 			{

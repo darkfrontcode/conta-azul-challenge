@@ -7,12 +7,6 @@ import common 						from './common'
 
 export default merge(common, <any>{
 
-	entry: {
-		'polyfills': path.join(__dirname, '../angular/polyfills'),
-		'vendor': path.join(__dirname, '../angular/vendor'),
-		'main': path.join(__dirname, '../angular/plans/production')
-	},
-
 	stats: {
 		children: false  
 	},
