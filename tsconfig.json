@@ -1,38 +1,18 @@
 {
 	"disableCompileOnSave": true,
+    "indentSize": 4,
+    "tabSize": 4,
 	"compilerOptions": {
-		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
-		"importHelpers": true,
-		"lib": [ "es2015", "dom", "es2015.collection", "es2015.iterable" ],
+        "target": "es5",
+		"lib": ["es2016", "dom", "es2015.collection", "es2015.iterable"],
 		"downlevelIteration": true,
-		"module": "commonjs",
-		"target": "es5",
-		"moduleResolution": "node",
-		"noImplicitAny": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"importHelpers": true,
 		"noUnusedLocals": true,
-		"strictNullChecks": true,
-		"pretty": true,
-		"removeComments": true,
-		"sourceMap": true,
-		"suppressImplicitAnyIndexErrors": true,
 		"allowSyntheticDefaultImports": true,
-		"allowJs": true,
-		"typeRoots": [
-            "./node_modules/@types"
-		],
-		"baseUrl": ".",
-		"paths": {
-            "models": ["server/express/models/index.ts"],
-			"builders": ["server/express/builders/index.ts"],
-			"vehicles": ["server/express/vehicles/index.ts"],
-			"api": ["server/express/controllers/api/index.ts"]
-        }
-	},
-    "include": [
-		"./server/angular/*"
-    ],
-	"exclude": [
-		"./node_modules"
-	]
+		"allowJs": true
+    }
 }

@@ -17,38 +17,52 @@
 
 </br>
 
+
+### Release 2.0.0
+
+<br>
+
+> :boom: :tada: :confetti_ball: Updates
+* ts-node server moved to a new instance of API which you can find here: [Vehicles API](https://github.com/darkfrontcode/vehicles-api)
+* application full integrated with Vehicles REST API
+* ts-server out webpack-dev-server in for a clean structure
+* http-server added for a simpler run
+* TravisCI removed to stick only with herokuCI
+* ForkJoin, BehaviorSubject and observer operators from rxJS added
+* Jest collectCoverage added to code coverage
+* Commented unit tests
+* SOLID concepts and Design Patterns applied
+* hard refactoring and general re-orders
+
 ### Description
 
 <br>
 
-> A simple CRUD actions vehicles dashboard
+> A simple vehicle dashboard with CRUD actions
 
-I have deployed a clone of this repo at heroku on the link below:
+I have deployed a clone of this repo at heroku in the link below:
 <br>
-https://conta-azul.herokuapp.com/.
+[Heroku ContaAzul](https://conta-azul.herokuapp.com/)
+
+You can visit the API in the link below. It have basic operations, *GET, POST, PUT, DELETE, PATCH, OPTIONS* and it's totally open.
+[Vehicle API](http://vehicles-api.herokuapp.com/vehicles)
 
 
-I also have a dockerhub image from this repo if you want to play around with docker.
+I also have a docker image from this repo uploaded at DockerHub if you want to play around with it.
 <br>
-https://hub.docker.com/r/darkfrontcode/conta-azul/
+[Docker Image](https://hub.docker.com/r/darkfrontcode/conta-azul/)
 
 <br>
 
 > General information
 
-The application runs above ts-node which is nothing more than a strongly typed node version. 
+Webpack-dev-server makes all the work, hot-reloading components, templates, styles, assets and making awesome async bundles.
 
-I have chosen express to manage all the routes and middlewares and Pug Template for an easier and faster code.
+I have used angular 5 with some extras animation libs like GSAP and MorphSVGPlugin to makes the magic happens.
 
-In development mode webpack-middleware makes the major part of the work, hot-reloading components, styles, assets and make awesome async bundles.
+For tests you can count on a new facebook library Jest.
 
-In production we can rely with all ts-node powers to maintain and scale the application to the top.
-
-At front-end level, I have used angular 5 with some extras animation libs like GSAP and CSS3 @keyframes to makes the magic and stylus to a really faster coding.
-
-For tests you can count on a new facebook library Jest. Check it out, it worth.
-
-I have used Figma and Proto.io to design extra layouts.
+I also have used Figma and Proto.io to design extra layouts.
 
 <br>
 
@@ -65,10 +79,9 @@ I have used Figma and Proto.io to design extra layouts.
 
 > How to use
 
-* npm start				=>  Serve the aplication in localhost:3000 in production mode
-* npm run prod			=>  Serve the aplication in localhost:3000 in production mode
-* npm run dev			=>  Triggers webpack-middlewares and serve application in localhost:3000 in development mode
-* npm run dev:mon		=>  Just in case if you want to play around with nodemon
-* npm run build			=>  build front-end application at public folder
+* npm start				=>  Serve the aplication in localhost:8080 in production mode
+* npm run prod			=>  Serve the aplication in localhost:8080 in production mode
+* npm run dev			=>  Triggers webpack-dev-server and serve application in localhost:8080 in development mode
+* npm run build			=>  build front-end application in **/build** folder
 * npm run test			=>  a delightful tests with jest according to documentation =}
 * npm run test:watch	=>  delightful tests in watchmode

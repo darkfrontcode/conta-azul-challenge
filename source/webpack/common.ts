@@ -1,0 +1,78 @@
+import * as path 					from 'path'
+import * as webpack 				from 'webpack'
+import * as copy 					from 'copy-webpack-plugin'
+import * as HtmlWebpackPlugin		from 'html-webpack-plugin'
+
+export default new Object({
+
+	entry: {
+		'polyfills': path.join(__dirname, '../angular/utils/polyfills'),
+		'vendor': path.join(__dirname, '../angular/utils/vendor'),
+		'main': path.join(__dirname, '../angular/plans/development'),
+	},
+
+	output: {
+
+		path: path.join(__dirname, '../../build'),
+		filename: "[name].js",
+		chunkFilename: '[id].chunk.js'
+
+	},
+
+	resolve: {
+
+		extensions: [ '.js', '.ts', '.pug', '.styl']
+
+	},
+
+	module: {
+		
+		exprContextCritical: false,
+
+		rules: [
+			
+			{
+				test: /\.ts$/,
+				use: [
+					'awesome-typescript-loader', 
+					'angular-router-loader',
+					'angular2-template-loader'
+				]
+			},
+			{
+				include: /\.pug/,
+				use: [
+					'raw-loader',
+					'pug-html-loader'
+				]
+			},
+			
+		]
+	},
+
+	plugins: [
+
+		new webpack.optimize.CommonsChunkPlugin(
+			new Object({ name: ['main', 'vendor', 'polyfills'] })
+		),
+
+		new HtmlWebpackPlugin({
+			template: path.join(__dirname, '../pug/template.pug'),
+			filename: 'index.html',
+			favicon: path.join(__dirname, '../assets/favicon.ico'),
+			inject: true
+		}),
+
+		new copy([
+			{
+				from: path.join(__dirname, '../assets'),
+				to: path.join(__dirname, '../../build/assets')
+			},
+			{
+				from: path.join(__dirname, '../vendors'),
+				to: path.join(__dirname, '../../build/vendors')
+			}
+		]),
+
+	]
+})
