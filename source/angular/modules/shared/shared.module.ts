@@ -7,6 +7,7 @@ import { FormsModule } 					from '@angular/forms'
 
 // services
 import { ValidationsService }			from './services/validations.service'
+import { VehicleUtilityService }		from './services/vehicle-utility.service'
 import { CAImagePreviewService }		from './components/ca-image-preview/ca-image-preview.service'
 import { CALoaderService }				from './components/ca-loader/ca-loader.service'
 
@@ -34,6 +35,7 @@ import { CALoaderComponent } 			from './components/ca-loader/ca-loader.component
 	providers: [
 
 		ValidationsService,
+		VehicleUtilityService,
 		CAImagePreviewService,
 		CALoaderService
 

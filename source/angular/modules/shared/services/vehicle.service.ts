@@ -1,13 +1,10 @@
 import { Injectable } 						from '@angular/core'
-import { Http } 							from '@angular/http'
+import { Http, RequestOptions, Headers } 	from '@angular/http'
 import { BehaviorSubject }					from 'rxjs/BehaviorSubject'
 import { Observable } 						from 'rxjs/Observable'
 import { URLTYPES } 						from '../enums'
-import { 
-	IVehicle, 
-	IVehicleTrackable, 
-	VehicleBuilder 
-}											from '../models'
+import { IVehicle, IVehicleTrackable }		from '../models'
+import { VehicleUtilityService }			from './vehicle-utility.service'
 
 @Injectable()
 export class VehicleService
@@ -18,7 +15,7 @@ export class VehicleService
 	public vehicles$ 		= this._vehicles$.asObservable()
 	public queryList$ 		= this._queryList$.asObservable()
 
-	constructor(private http: Http)
+	constructor(private http: Http, private utility: VehicleUtilityService)
 	{
 
 	}
@@ -43,21 +40,16 @@ export class VehicleService
 		this._queryList$.next(vehicles)
 	}
 
-	public addVehiclesToStore(vehicles: Array<IVehicleTrackable>) : void
-	{
-		this.vehicles = vehicles
-	}
-
 	public requestVehicles() : Observable<Array<IVehicleTrackable>>
 	{
 		return this.http
 			.get(URLTYPES.VEHICLES)
-			.map(res => this.convertArrayToTrackable(res.json()))
+			.map(res => this.utility.convertArrayToTrackable(res.json()))
 	}
 
-	public convertArrayToTrackable(vehicles: Array<IVehicle>) : Array<IVehicleTrackable>
+	public addVehiclesToStore(vehicles: Array<IVehicleTrackable>) : void
 	{
-		return <Array<IVehicleTrackable>>vehicles.map((vehicle: IVehicle) => this.convertToTrackable(vehicle))
+		this.vehicles = vehicles
 	}
 
 	public search(query:string)
@@ -81,53 +73,40 @@ export class VehicleService
 
 	public findById(id: number) : IVehicleTrackable
 	{
-		return <IVehicleTrackable>this.vehicles.filter((vehicle:IVehicleTrackable) => vehicle.id === id).pop()
+		return <IVehicleTrackable>this.vehicles.filter(vehicle => vehicle.id === id).pop()
 	}
 
 	public remove()
 	{
-		this.vehicles = this.vehicles.filter((vehicle: IVehicleTrackable) => (!vehicle.check ? vehicle : undefined))
-		this.updateQueryList()
+		this.http
+			.delete(URLTYPES.VEHICLES, new RequestOptions({ 
+				headers: new Headers({ 'Content-Type': 'application/json' }),
+				body: this.utility.reduceToId(this.vehicles) 
+			}))
+			.subscribe(() => {
+				this.vehicles = this.vehicles.filter(vehicle => !vehicle.check)
+				this.updateQueryList()
+			})
+	}
+
+	public add(vehicle:IVehicle)
+	{	
+		const newVehicle = this.utility.buildVehicle(vehicle, this.vehicles)
+
+		this.http
+			.post(URLTYPES.VEHICLES, newVehicle)
+			.subscribe(() => this.vehicles = new Array<IVehicleTrackable>(
+				...this.vehicles, 
+				this.utility.convertToTrackable(newVehicle)
+			))
 	}
 
 	private updateQueryList()
 	{
 		if(this.queryList != null)
 		{
-			this.queryList = this.queryList.filter((vehicle: IVehicleTrackable) => (!vehicle.check ? vehicle : undefined))
+			this.queryList = this.queryList.filter(vehicle => !vehicle.check)
 		}
-	}
-
-	public add(vehicle:IVehicle)
-	{	
-		this.vehicles = new Array<IVehicleTrackable>(...this.vehicles, this.convertToTrackable(this.buildVehicle(vehicle)))
-	}
-
-	public convertToTrackable(vehicle:IVehicle) : IVehicleTrackable
-	{
-		const trackable = <IVehicleTrackable>vehicle
-		trackable.check = false
-		return trackable
-	}
-
-	public buildVehicle(vehicle:IVehicle) : IVehicle
-	{
-		return VehicleBuilder.builder()
-			.withId(this.generateId())
-			.withCombustivel(vehicle.combustivel)
-			.withImagem(vehicle.imagem)
-			.withMarca(vehicle.marca)
-			.withModelo(vehicle.modelo)
-			.withPlaca(vehicle.placa)
-			.withValor(vehicle.valor)
-			.build()
-	}
-
-	public generateId() : number
-	{
-		return this.vehicles.reduce((maxId, vehicle)=>{
-			return Math.max(vehicle.id, maxId)
-		}, -1) + 1
 	}
 
 }
