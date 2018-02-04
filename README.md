@@ -1,6 +1,5 @@
 # ContaAzul Challenge
 
-[![Build Status](https://travis-ci.org/darkfrontcode/conta-azul-challenge.svg?branch=master)](https://travis-ci.org/darkfrontcode/conta-azul-challenge)
 [![Heroku](https://heroku-badge.herokuapp.com/?app=conta-azul)](https://conta-azul.herokuapp.com)
 [![Coveralls github](https://img.shields.io/coveralls/github/jekyll/jekyll.svg)](https://github.com/darkfrontcode/conta-azul-challenge)
 [![node (scoped with tag)](https://img.shields.io/node/v/@stdlib/stdlib/latest.svg)](https://github.com/darkfrontcode/conta-azul-challenge)
@@ -42,15 +41,20 @@
 
 I have deployed a clone of this repo at heroku in the link below:
 <br>
-[Heroku ContaAzul](https://conta-azul.herokuapp.com/)
+* [Heroku ContaAzul](https://conta-azul.herokuapp.com/)
+
+<br>
 
 You can visit the API in the link below. It have basic operations, *GET, POST, PUT, DELETE, PATCH, OPTIONS* and it's totally open.
-[Vehicle API](http://vehicles-api.herokuapp.com/vehicles)
+<br>
+* [Vehicle API](http://vehicles-api.herokuapp.com/vehicles)
+* [Github Reposity](https://github.com/darkfrontcode/vehicles-api)
 
+<br>
 
 I also have a docker image from this repo uploaded at DockerHub if you want to play around with it.
 <br>
-[Docker Image](https://hub.docker.com/r/darkfrontcode/conta-azul/)
+* [Docker Image](https://hub.docker.com/r/darkfrontcode/conta-azul/)
 
 <br>
 
