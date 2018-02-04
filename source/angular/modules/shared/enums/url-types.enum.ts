@@ -1,4 +1,4 @@
 export enum URLTYPES
 {
-	VEHICLES = 'http://vehicles-api.herokuapp.com/vehicles'
+	VEHICLES = 'https://vehicles-api.herokuapp.com/vehicles'
 }
