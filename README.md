@@ -23,7 +23,7 @@
 
 > :boom: :tada: :confetti_ball: Updates
 * ts-node server moved to a new instance of API which you can find here: [Vehicles API](https://github.com/darkfrontcode/vehicles-api)
-* application full integrated with Vehicles REST API
+* application full integrated with Vehicles API
 * ts-server out webpack-dev-server in for a clean structure
 * http-server added for a simpler run
 * TravisCI removed to stick only with herokuCI
@@ -45,7 +45,7 @@ I have deployed a clone of this repo at heroku in the link below:
 
 <br>
 
-You can visit the API in the link below. It have basic operations, *GET, POST, PUT, DELETE, PATCH, OPTIONS* and it's totally open.
+You can visit the API in the link below. It have basic CRUD operations and it's totally open.
 <br>
 * [Vehicle API](http://vehicles-api.herokuapp.com/vehicles)
 * [Github Reposity](https://github.com/darkfrontcode/vehicles-api)
