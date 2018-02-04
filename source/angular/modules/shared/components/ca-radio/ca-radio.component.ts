@@ -7,7 +7,6 @@ import { Component, Input, Output, EventEmitter, HostBinding } from '@angular/co
 })
 export class CARadioComponent
 {
-
 	@HostBinding('class.active')
 	@Input()
 	public active: boolean
@@ -24,7 +23,9 @@ export class CARadioComponent
 	@Output()
 	public state = new EventEmitter<string>()
 	
-	public onChange(value:string)
+	public model: boolean
+
+	public onClick(value:string)
 	{
 		this.state.emit(value)
 	}

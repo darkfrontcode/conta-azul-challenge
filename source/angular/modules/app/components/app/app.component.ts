@@ -41,23 +41,37 @@ export class AppComponent implements OnInit, AfterViewInit
 
 	ngAfterViewInit(): void
 	{
-		this.loaderService.state = true
-		this._timer = Observable.timer(CALoaderAnimations.TIMER)
+		this.loaderService.open()
+		this.addTimer()
+		this.awaitAnimationAndRequestEnd()
+	}
 
+	private awaitAnimationAndRequestEnd()
+	{
 		Observable
 			.forkJoin(new Array<Observable<any>>(
 				this.vehicleService.requestVehicles(),
-				this._timer
+				this.deliveryTimer()
 			))
 			.subscribe(res => {
 
-				console.log('done')
-
-				this.loaderService.state = false
-				this.loaderService.DOMReady = true
-				this.vehicleService.vehicles = res.shift()
+				const vehicles = res.shift()
+				
+				this.loaderService.close()
+				this.loaderService.ready()
+				this.vehicleService.addVehiclesToStore(vehicles)
 
 			})
+	}
+
+	private addTimer() : void
+	{
+		this._timer = Observable.timer(CALoaderAnimations.TIMER)
+	}
+
+	private deliveryTimer() : Observable<number>
+	{
+		return this._timer
 	}
 
 }

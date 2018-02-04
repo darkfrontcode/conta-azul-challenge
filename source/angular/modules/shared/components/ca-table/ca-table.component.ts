@@ -22,10 +22,11 @@ enum PROPS
 })
 export class CATableComponent implements OnChanges
 {
+	private _checkboxState: boolean
+	
 	public start: number
 	public end: number
 	public offset: number
-	private _checkboxState: boolean
 
 	@Input()
 	public data: Array<IVehicleTrackable>
@@ -47,13 +48,8 @@ export class CATableComponent implements OnChanges
 
 		if(!selection)
 		{
-			if(this.start == current.length)
-			{
-				this.start -= this.offset
-				this.end -= this.offset
-			}
-
-			this._checkboxState = false
+			if(this.start == current.length) this.moveBackwards()
+			this.unmarkCheckbox()
 		}
 
 	}
@@ -85,7 +81,7 @@ export class CATableComponent implements OnChanges
 		this.imagePreviewService.open(url)
 	}
 
-	public selectAll(state: boolean) : Array<IVehicleTrackable>
+	private selectAll(state: boolean) : Array<IVehicleTrackable>
 	{
 		const sliceTrack 		= ArrayUtils.sliceTrack(this.data, this.start, this.end)
 		const changeProps 		= ArrayUtils.changeProps(sliceTrack, PROPS.CHECK, state)
@@ -94,11 +90,16 @@ export class CATableComponent implements OnChanges
 		return ArrayUtils.unique(ArrayUtils.merge(arrays))
 	}
 
-
 	public resetSelection() : void
 	{
-		this._checkboxState = false
+		this.unmarkCheckbox()
 		this.data = ArrayUtils.changeProps(this.data, PROPS.CHECK, false)
+	}
+
+	private moveBackwards()
+	{
+		this.start -= this.offset
+		this.end -= this.offset
 	}
 
 }

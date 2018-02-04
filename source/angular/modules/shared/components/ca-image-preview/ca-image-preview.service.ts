@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core'
 @Injectable()
 export class CAImagePreviewService
 {
-
 	public state: boolean
 	public image: string | null
 

@@ -43,6 +43,11 @@ export class VehicleService
 		this._queryList$.next(vehicles)
 	}
 
+	public addVehiclesToStore(vehicles: Array<IVehicleTrackable>) : void
+	{
+		this.vehicles = vehicles
+	}
+
 	public requestVehicles() : Observable<Array<IVehicleTrackable>>
 	{
 		return this.http

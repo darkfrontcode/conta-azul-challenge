@@ -20,4 +20,19 @@ export class CALoaderService
 		this._DOMReady$.next(state)
 	}
 
+	open()
+	{
+		this.state = true
+	}
+
+	close()
+	{
+		this.state = false
+	}
+
+	ready()
+	{
+		this.DOMReady = true
+	}
+
 }

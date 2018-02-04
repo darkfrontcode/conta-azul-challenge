@@ -94,18 +94,16 @@ export class CreateComponent implements OnChanges
 
 	public reset() : void
 	{
-
 		new Array<string>(
-			"placa", 
-			"modelo", 
-			"marca", 
-			"imagem", 
-			"combustivel", 
-			"valor"
-		).map((key) => this[key] = null)
+			'placa', 
+			'modelo', 
+			'marca', 
+			'imagem', 
+			'combustivel', 
+			'valor'
+		).map(key => this[key] = null)
 
 		this.form.reset()
-
 	}
 
 	public valid(name:string) : string

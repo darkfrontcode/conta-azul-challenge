@@ -6,5 +6,6 @@ label
 		type="radio", 
 		[name]="radiogroup", 
 		[value]="value", 
-		(change)="onChange(value)"
+		(click)="onClick(value)",
+		[(ngModel)]="model"
 	)
