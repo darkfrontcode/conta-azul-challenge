@@ -5,12 +5,6 @@ import * as HtmlWebpackPlugin		from 'html-webpack-plugin'
 
 export default new Object({
 
-	entry: {
-		'polyfills': path.join(__dirname, '../angular/utils/polyfills'),
-		'vendor': path.join(__dirname, '../angular/utils/vendor'),
-		'main': path.join(__dirname, '../angular/plans/development'),
-	},
-
 	output: {
 
 		path: path.join(__dirname, '../../build'),

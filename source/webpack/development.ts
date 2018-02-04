@@ -7,6 +7,12 @@ export default merge(common, <any>{
 
 	devtool: "cheap-module-eval-source-map",
 
+	entry: {
+		'polyfills': path.join(__dirname, '../angular/utils/polyfills'),
+		'vendor': path.join(__dirname, '../angular/utils/vendor'),
+		'main': path.join(__dirname, '../angular/plans/development'),
+	},
+
 	module: {
 
 		rules: [
